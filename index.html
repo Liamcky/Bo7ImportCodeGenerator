@@ -3,18 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Custom Base32 Calculator</title>
-<style>
-    body { font-family: Arial, sans-serif; margin: 40px; }
-    input { margin: 5px 0; width: 300px; padding: 5px; }
-    button { padding: 10px 20px; margin-top: 10px; }
-    .result { margin-top: 20px; font-weight: bold; }
-</style>
+<title>Weapon Import Code Generator</title>
+ <style>
+    body { font-family: Arial, sans-serif; background:#111; color:#eee; padding:20px; }
+    h1 { text-align:center; color:#6cf; }
+    form { display:grid; grid-template-columns:1fr 1fr; gap:10px; max-width:600px; margin:0 auto; }
+    label { display:flex; flex-direction:column; font-size:14px; }
+    input, select { padding:3px; font-size:14px; border-radius:6px; border:none; margin-top:3px; }
+    #result { text-align:center; margin-top:20px; font-size:20px; font-weight:bold; color:#0f0; }
+    .container { background:#222; padding:10px; border-radius:12px; max-width:900px; box-shadow:0 0 10px #000; margin-left: auto;
+  margin-right: auto; }
+  </style>
 </head>
 <body>
-
-<h1>Custom Base32 Calculator</h1>
-
+<h1>Call of Duty BO7</h1>
+<h1>Weapon Import Code Generator</h1>
+<div class="container">
 <label>Optic:
     <select id="optic" onchange="calculate()>
           <option selected></option>
@@ -109,7 +113,7 @@
 </label><br>
 
 <div class="result" id="result"></div>
-
+ </div>
 <script>
 function customAddMultiple(...inputs) {
     if (inputs.length === 0) return '';
