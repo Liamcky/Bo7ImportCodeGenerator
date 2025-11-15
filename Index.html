@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Custom Base32 Calculator</title>
+<style>
+    body { font-family: Arial, sans-serif; margin: 40px; }
+    input { margin: 5px 0; width: 300px; padding: 5px; }
+    button { padding: 10px 20px; margin-top: 10px; }
+    .result { margin-top: 20px; font-weight: bold; }
+</style>
+</head>
+<body>
+
+<h1>Custom Base32 Calculator</h1>
+
+<label>Optic:</label><br>
+<input type="text" id="optic" placeholder="Enter value"><br>
+
+<label>Muzzle:</label><br>
+<input type="text" id="muzzle" placeholder="Enter value"><br>
+
+<label>Barrel:</label><br>
+<input type="text" id="barrel" placeholder="Enter value"><br>
+
+<label>Magazine:</label><br>
+<input type="text" id="magazine" placeholder="Enter value"><br>
+
+<label>Rear Grip:</label><br>
+<input type="text" id="rearGrip" placeholder="Enter value"><br>
+
+<label>Stock:</label><br>
+<input type="text" id="stock" placeholder="Enter value"><br>
+
+<label>Laser:</label><br>
+<input type="text" id="laser" placeholder="Enter value"><br>
+
+<label>Fire Modes:</label><br>
+<input type="text" id="fireModes" placeholder="Enter value"><br>
+
+<button onclick="calculate()">Calculate</button>
+
+<div class="result" id="result"></div>
+
+<script>
+function customAddMultiple(...inputs) {
+    if (inputs.length === 0) return '';
+
+    const charset = "123456789ABCDEFGHIJKLMNPQRSTUVWXYZ"; // Base32 without O
+    const baseValue = charset.length;
+
+    const charToIndex = {};
+    const indexToChar = {};
+
+    for (let i = 0; i < charset.length; i++) {
+        charToIndex[charset[i]] = i;
+        indexToChar[i] = charset[i];
+    }
+    charToIndex['1'] = 0; // 1 = 0
+
+    const maxLength = Math.max(...inputs.map(s => s.length));
+    const padded = inputs.map(s => s.padStart(maxLength, '1'));
+
+    let carry = 0;
+    let result = '';
+
+    for (let i = maxLength - 1; i >= 0; i--) {
+        let sum = carry;
+        for (const str of padded) {
+            sum += charToIndex[str[i]] || 0; // Treat empty or invalid chars as 0
+        }
+        const digit = sum % baseValue;
+        carry = Math.floor(sum / baseValue);
+        result = indexToChar[digit] + result;
+    }
+
+    while (carry > 0) {
+        const digit = carry % baseValue;
+        carry = Math.floor(carry / baseValue);
+        result = indexToChar[digit] + result;
+    }
+
+    return result;
+}
+
+function calculate() {
+    const values = [
+        document.getElementById('optic').value.toUpperCase(),
+        document.getElementById('muzzle').value.toUpperCase(),
+        document.getElementById('barrel').value.toUpperCase(),
+        document.getElementById('magazine').value.toUpperCase(),
+        document.getElementById('rearGrip').value.toUpperCase(),
+        document.getElementById('stock').value.toUpperCase(),
+        document.getElementById('laser').value.toUpperCase(),
+        document.getElementById('fireModes').value.toUpperCase()
+    ];
+
+    const result = customAddMultiple(...values);
+    document.getElementById('result').innerText = "Result: " + result;
+}
+</script>
+
+</body>
+</html>
