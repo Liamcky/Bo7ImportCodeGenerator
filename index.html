@@ -16,7 +16,8 @@
 <h1>Custom Base32 Calculator</h1>
 
 <label>Optic:
-    <select id="optic">
+    <select id="optic" onchange="calculate()>
+          <option selected></option>
           <option>5XGZH-JLU91-1</option>
           <option>8E7Z8-TX9D1-1</option>
           <option>AUXYZ-48NH1-1</option>
@@ -25,7 +26,8 @@
         </select>
 </label><br>
 <label>Muzzle:
- <select id="muzzle">
+ <select id="muzzle" onchange="calculate()>
+          <option selected></option>
           <option>7AFKS-11</option>
           <option>45QAW-11</option>
           <option>2KD5Y-11</option>
@@ -34,7 +36,7 @@
         </select>
     </label><br>
 <label>Barrel:
- <select id="barrel">
+ <select id="barrel" onchange="calculate()>
           <option selected></option>
           <option>H11</option>
           <option>2711</option>
@@ -44,7 +46,7 @@
         </select>
     </label><br>
 <label>Underbarrel:
- <select id="underbarrel">
+ <select id="underbarrel" onchange="calculate()>
           <option selected></option>
           <option>6K2Z6-A311</option>
           <option>7YBYY-3U11</option>
@@ -58,7 +60,7 @@
         </select>
     </label><br>   
 <label>Magazine:
-<select id="magazine">
+<select id="magazine" onchange="calculate()>
           <option selected></option>
           <option>6BQ11</option>
           <option>4JH11</option>
@@ -67,7 +69,7 @@
         </select>
 </label><br>
 <label>Rear Grip:
-<select id="rearGrip">
+<select id="rearGrip" onchange="calculate()>
           <option selected></option>
           <option>CTRG7-Y11</option>
           <option>IQM6T-F11</option>
@@ -77,7 +79,7 @@
         </select>
 </label><br>
 <label>Stock:
-<select id="stock">
+<select id="stock" onchange="calculate()>
           <option selected></option>
           <option>G311</option>
           <option>8J11</option>
@@ -87,7 +89,7 @@
         </select>
 </label><br>
 <label>Laser:
-<select id="laser">
+<select id="laser" onchange="calculate()>
           <option selected></option>
           <option>68XV7-YIW11</option>
           <option>3LYXL-H9Y11</option>
@@ -97,7 +99,7 @@
         </select>
 </label><br>
 <label>Fire Mods:
-<select id="fireMods">
+<select id="fireMods" onchange="calculate()>
           <option selected></option>
           <option>131</option>
           <option>2JD6P-5HFUD-KB11</option>
@@ -105,7 +107,6 @@
           <option>21WSG-FBYJX-2J11</option>
         </select>
 </label><br>
-<button onclick="calculate()">Calculate</button>
 
 <div class="result" id="result"></div>
 
