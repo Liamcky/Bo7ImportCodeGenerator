@@ -15,30 +15,76 @@
 
 <h1>Custom Base32 Calculator</h1>
 
-<label>Optic:</label><br>
-<input type="text" id="optic" placeholder="Enter value"><br>
-
-<label>Muzzle:</label><br>
-<input type="text" id="muzzle" placeholder="Enter value"><br>
-
-<label>Barrel:</label><br>
-<input type="text" id="barrel" placeholder="Enter value"><br>
-
-<label>Magazine:</label><br>
-<input type="text" id="magazine" placeholder="Enter value"><br>
-
-<label>Rear Grip:</label><br>
-<input type="text" id="rearGrip" placeholder="Enter value"><br>
-
-<label>Stock:</label><br>
-<input type="text" id="stock" placeholder="Enter value"><br>
-
-<label>Laser:</label><br>
-<input type="text" id="laser" placeholder="Enter value"><br>
-
-<label>Fire Modes:</label><br>
-<input type="text" id="fireModes" placeholder="Enter value"><br>
-
+<label>Optic:
+    <select id="optic">
+          <option>5XGZH-JLU91-1</option>
+          <option>8E7Z8-TX9D1-1</option>
+          <option>AUXYZ-48NH1-1</option>
+          <option>DBNYQ-DJ§L1-1</option>
+          <option>FSEYG-MUHQ1-1</option>
+        </select>
+</label><br>
+<label>Muzzle:
+ <select id="muzzle">
+          <option>7AFKS-11</option>
+          <option>45QAW-11</option>
+          <option>2KD5Y-11</option>
+          <option>5Q3FU-11</option>
+          <option>8USQQ-11</option>
+        </select>
+    </label><br>
+<label>Barrel:
+ <select id="barrel">
+          <option>H11</option>
+          <option>2711</option>
+          <option>2F11</option>
+          <option>Y11</option>
+          <option>Q11</option>
+        </select>
+    </label><br>
+<label>Magazine:
+<select id="magazine">
+          <option>6BQ11</option>
+          <option>4JH11</option>
+          <option>83Y11</option>
+          <option>9V711</option>
+        </select>
+</label><br>
+<label>Rear Grip:
+<select id="rearGrip">
+          <option>CTRG7-Y11</option>
+          <option>IQM6T-F11</option>
+          <option>6WVQL-H11</option>
+          <option>9VBKW-Q11</option>
+          <option>FS7BI-711</option>
+        </select>
+</label><br>
+<label>Stock:
+<select id="stock">
+          <option>G311</option>
+          <option>8J11</option>
+          <option>CB11</option>
+          <option>NL11</option>
+          <option>JU11</option>
+        </select>
+</label><br>
+<label>Laser:
+<select id="laser">
+          <option>68XV7-YIW11</option>
+          <option>3LYXL-H9Y11</option>
+          <option>BGVQE-X2S11</option>
+          <option>8UWST-FSU11</option>
+          <option>E3UN1-EBQ11</option>
+        </select>
+</label><br>
+<label>Fire Mods:
+<select id="fireMods">
+          <option>131</option>
+          <option>2JD6P-5HFUD-KB11</option>
+          <option>151</option>
+          <option>21WSG-FBYJX-2J11</option>
+        </select>
+</label><br>
 <button onclick="calculate()">Calculate</button>
 
 <div class="result" id="result"></div>
@@ -93,7 +139,7 @@ function calculate() {
         document.getElementById('rearGrip').value.toUpperCase(),
         document.getElementById('stock').value.toUpperCase(),
         document.getElementById('laser').value.toUpperCase(),
-        document.getElementById('fireModes').value.toUpperCase()
+        document.getElementById('fireMods').value.toUpperCase()
     ];
      for (let i = 0; i < 7; i++) {
         values[i] = values[i].replace(/-/g, '');
