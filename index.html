@@ -27,15 +27,15 @@
  <h2>HAVE FUN</h2>
  <div class="selectcontainer">
 <label>Category:
- <select id="category" onchange="categorymap()">
+ <select id="category" onchange="categorymap(this.value)">
           <option selected></option>
-          <option>Assault Rifles</option>
-          <option>SMGS</option>
-          <option>Shotguns</option>
-          <option>LMGS</option>
-          <option>Marksman Rifles</option>
-          <option>Sniper Rifles</option>
-          <option>Pistols</option>
+          <option value="assaultRifle">Assault Rifles</option>
+          <option value="submachinegun">SMGS</option>
+          <option value="shotgun">Shotguns</option>
+          <option value="lightmachinegun">LMGS</option>
+          <option value="marksmanRifle">Marksman Rifles</option>
+          <option value="sniper">Sniper Rifles</option>
+          <option value="pistol">Pistols</option>
         </select>
 </label>
   <label>Weapon:
