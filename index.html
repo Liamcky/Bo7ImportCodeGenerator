@@ -277,6 +277,7 @@ const pistol = Object.freeze({
 };
  
 const category = document.getElementById('category').value;
+ 
 function categorymap(category){
  const weapon = document.getElementById('weapon');
   weapon.innerHTML = "";
@@ -290,6 +291,7 @@ function categorymap(category){
     opt.textContent = name; 
     weapon.appendChild(opt);
   });
+ calculate();
 }
  
 function customAddMultiple(...inputs) {
