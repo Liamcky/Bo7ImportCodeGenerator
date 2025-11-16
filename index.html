@@ -352,7 +352,7 @@ function calculate() {
     }
     const weaponvalue = document.getElementById('weapon').value;
     const result = customAddMultiple(...values);
-    document.getElementById('result').innerText = "Result: " + weaponvalue + result.match(/.{1,5}/g).join('-');
+    document.getElementById('result').innerText = "Result: " + weaponvalue + "-" + result.match(/.{1,5}/g).join('-');
 }
 </script>
 
