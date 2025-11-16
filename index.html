@@ -134,7 +134,7 @@
         </select>
 </label>
 <label>Fire Mod 1:
-<select id="fireMod1" onchange="calculate()">
+<select class="sync" id="fireMod1" onchange="calculate()">
           <option selected></option>
           <option>131</option>
           <option>2JD6P-5HFUD-KB11</option>
@@ -144,7 +144,7 @@
         </select>
 </label>
 <label>Fire Mod 2:
-<select id="fireMod2" onchange="calculate()">
+<select class="sync" id="fireMod2" onchange="calculate()">
           <option selected></option>
           <option>131</option>
           <option>2JD6P-5HFUD-KB11</option>
@@ -154,7 +154,7 @@
         </select>
 </label>
 <label>Fire Mod 3:
-<select id="fireMod3" onchange="calculate()">
+<select class="sync" id="fireMod3" onchange="calculate()">
           <option selected></option>
           <option>131</option>
           <option>2JD6P-5HFUD-KB11</option>
@@ -164,7 +164,7 @@
         </select>
 </label>
  <label>Fire Mod 4:
-<select id="fireMod4" onchange="calculate()">
+<select class="sync" id="fireMod4" onchange="calculate()">
           <option selected></option>
           <option>131</option>
           <option>2JD6P-5HFUD-KB11</option>
@@ -177,6 +177,33 @@
 <div class="result" id="result"></div>
  </div>
 <script>
+const selects = document.querySelectorAll("select.sync");
+ 
+function updateOptions() {
+    const selectedValues = Array.from(selects)
+        .map(s => s.value)
+        .filter(v => v !== ""); //ignore empty
+
+    selects.forEach(select => {
+        const ownValue = select.value; //value for each select
+
+        Array.from(select.options).forEach(opt => {
+            if (opt.value === "" || opt.value === ownValue) {
+                //show own options
+                opt.hidden = false;
+            } else {
+                //hid options in other
+                opt.hidden = selectedValues.includes(opt.value);
+            }
+        });
+    });
+}
+
+selects.forEach(select => {
+    select.addEventListener("change", updateOptions);
+});
+updateOptions();
+ 
 function customAddMultiple(...inputs) {
     if (inputs.length === 0) return '';
 
