@@ -331,7 +331,7 @@ function customAddMultiple(...inputs) {
 
     return result;
 }
-
+let weaponvalue = "";
 function calculate() {
     const values = [
         document.getElementById('optic').value.toUpperCase(),
@@ -346,11 +346,13 @@ function calculate() {
         document.getElementById('fireMod2').value.toUpperCase(),
         document.getElementById('fireMod3').value.toUpperCase(),
         document.getElementById('fireMod4').value.toUpperCase()
+        weaponvalue = document.getElementById('weapon').value;
     ];
      for (let i = 0; i < values.length; i++) {
         values[i] = values[i].replace(/-/g, '');
     }
-    const weaponvalue = document.getElementById('weapon').value;
+    
+      
     const result = customAddMultiple(...values);
     document.getElementById('result').innerText = "Result: " + weaponvalue + "-" + result.match(/.{1,5}/g).join('-');
 }
