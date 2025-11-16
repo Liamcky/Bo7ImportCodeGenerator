@@ -26,7 +26,21 @@
  <p>Result is the Import code just add the corresponding beginning to it for example: A01=first AR S01=first Sub</p>
  <h2>HAVE FUN</h2>
  <div class="selectcontainer">
-  
+<label>Category:
+ <select id="category" onchange="cartegorymap()">
+          <option selected></option>
+          <option>Assault Rifles</option>
+          <option>SMGS</option>
+          <option>Shotguns</option>
+          <option>LMGS</option>
+          <option>Marksman Rifles</option>
+          <option>Sniper Rifles</option>
+          <option>Pistols</option>
+        </select>
+</label>
+  <label>Weapon:
+ <select id="weapon"></select>
+</label>
 <label>Optic:
     <select id="optic" onchange="calculate()">
           <option selected></option>
@@ -211,6 +225,72 @@ selects.forEach(select => {
     select.addEventListener("change", updateOptions);
 });
 updateOptions();
+
+const assaultRifle = Object.freeze({
+  "M15 MOD 0": "A01",
+  "AK-27": "A02",
+  "MXR-17": "A03",
+  "X9 Maverick": "A04",
+  "DS20 Mirage": "A05",
+  "Peacekeeper MK1": "A06"
+});
+const submachinegun = Object.freeze({
+  "Ryden 45K": "S01",
+  "RK-9": "S02",
+  "Razor 9mm": "S03",
+  "Dravec 45": "S04",
+  "Carbon 57": "S05",
+  "MPC-25": "S06"
+});
+const shotgun = Object.freeze({
+  "M10 Breacher": "C01",
+  "Echo 12": "C02",
+  "Akita": "C03"
+});
+const lightmachinegun = Object.freeze({
+  "MK.78": "L01",
+  "XM325": "L02"
+});
+const marksmanRifle = Object.freeze({
+  "M8A1": "M01",
+  "Warden 308": "M02",
+  "M34 Novaline": "M03"
+});
+const sniper = Object.freeze({
+  "VS Recon": "R01",
+  "Shadow SK": "R02",
+  "XR-3 Ion": "R03"
+});
+const pistol = Object.freeze({
+  "Jäger 45": "P01",
+  "Velox 5.7": "P02",
+  "Coda 9": "P03"
+});
+ const weaponMap = {
+  assaultRifle,
+  submachinegun,
+  shotgun,
+  lightmachinegun,
+  marksmanRifle,
+  sniper,
+  pistol
+};
+ 
+const category = document.getElementById('category').value;
+function categorymap(category){
+ const weapon = document.getElementById('weapon');
+  weapon.innerHTML = "";
+  const selectedCategory = weaponMap[category];
+  if (!selectedCategory) return;
+
+  //get options
+  Object.entries(selectedCategory).forEach(([name, code]) => {
+    const opt = document.createElement("option");
+    opt.value = code;     
+    opt.textContent = name; 
+    weapon.appendChild(opt);
+  });
+}
  
 function customAddMultiple(...inputs) {
     if (inputs.length === 0) return '';
@@ -270,9 +350,9 @@ function calculate() {
      for (let i = 0; i < values.length; i++) {
         values[i] = values[i].replace(/-/g, '');
     }
-
+    const weaponvalue = document.getElementById('weapon').value;
     const result = customAddMultiple(...values);
-    document.getElementById('result').innerText = "Result: " + result.match(/.{1,5}/g).join('-');
+    document.getElementById('result').innerText = "Result: " + weaponvalue + result.match(/.{1,5}/g).join('-');
 }
 </script>
 
