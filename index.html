@@ -333,6 +333,7 @@ function customAddMultiple(...inputs) {
 }
 let weaponvalue = "";
 function calculate() {
+    weaponvalue = document.getElementById('weapon').value;
     const values = [
         document.getElementById('optic').value.toUpperCase(),
         document.getElementById('muzzle').value.toUpperCase(),
@@ -345,8 +346,7 @@ function calculate() {
         document.getElementById('fireMod1').value.toUpperCase(),
         document.getElementById('fireMod2').value.toUpperCase(),
         document.getElementById('fireMod3').value.toUpperCase(),
-        document.getElementById('fireMod4').value.toUpperCase()
-        weaponvalue = document.getElementById('weapon').value;
+        document.getElementById('fireMod4').value.toUpperCase()       
     ];
      for (let i = 0; i < values.length; i++) {
         values[i] = values[i].replace(/-/g, '');
