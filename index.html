@@ -97,18 +97,23 @@
 <label>Underbarrel:
  <select id="underbarrel" onchange="calculate()">
           <option selected></option>
+          <option>2E9ZS-TS11</option>
+          <option>3SIZK-MJ11</option>
+          <option>56SZD-GB11</option>
           <option>6K2Z6-A311</option>
           <option>7YBYY-3U11</option>
-          <option>2E9ZS-TS11</option>
-          <option>56SZD-GB11</option>
-          <option>3SIZK-MJ11</option>
+          <option>9CKYQ-WL11</option>
+        </select>
+</label>
+<label>Launchers:
+<select id="launchers" onchange="calculate()">
+          <option selected></option>
           <option>2DD7G-6R72R-B11</option>
           <option>243YD-5L5UL-911</option>
           <option>TTQA4-G4MG7-11</option>
           <option>JJH73-B3FB5-11</option>
-          <option>9CKYQ-WL11</option>
         </select>
-</label>   
+</label>
 <label>Magazine:
 <select id="magazine" onchange="calculate()">
           <option selected></option>
@@ -150,84 +155,32 @@
           <option>E3UN1-EBQ11</option>
         </select>
 </label>
-<label>Fire Mod 1:
-<select class="sync" id="fireMod1" onchange="calculate()">
+<label>Fire Mod:
+<select id="fireMod" onchange="calculate()">
           <option selected></option>
           <option>131</option>
           <option>151</option>
-          <option>UCS11</option>
-          <option>2NPJ1-1</option>
-          <option>3SIZK-MJ11</option>
+        </select>
+</label>
+<label>Ammo Mod:
+<select id="ammoMod" onchange="calculate()">
+          <option selected></option>
           <option>21WSG-FBYJX-2J11</option>
           <option>2JD6P-5HFUD-KB11</option>
         </select>
 </label>
-<label>Fire Mod 2:
-<select class="sync" id="fireMod2" onchange="calculate()">
+<label>Special:
+<select id="special" onchange="calculate()">
           <option selected></option>
-          <option>131</option>
-          <option>151</option>
           <option>UCS11</option>
           <option>2NPJ1-1</option>
           <option>3SIZK-MJ11</option>
-          <option>21WSG-FBYJX-2J11</option>
-          <option>2JD6P-5HFUD-KB11</option>
-        </select>
-</label>
-<label>Fire Mod 3:
-<select class="sync" id="fireMod3" onchange="calculate()">
-          <option selected></option>
-          <option>131</option>
-          <option>151</option>
-          <option>UCS11</option>
-          <option>2NPJ1-1</option>
-          <option>3SIZK-MJ11</option>
-          <option>21WSG-FBYJX-2J11</option>
-          <option>2JD6P-5HFUD-KB11</option>
-        </select>
-</label>
- <label>Fire Mod 4:
-<select class="sync" id="fireMod4" onchange="calculate()">
-          <option selected></option>
-          <option>131</option>
-          <option>151</option>
-          <option>UCS11</option>
-          <option>2NPJ1-1</option>
-          <option>3SIZK-MJ11</option>
-          <option>21WSG-FBYJX-2J11</option>
-          <option>2JD6P-5HFUD-KB11</option>
         </select>
 </label>
  </div>
 <div class="result" id="result"></div>
  </div>
 <script>
-const selects = document.querySelectorAll("select.sync");
- 
-function updateOptions() {
-    const selectedValues = Array.from(selects)
-        .map(s => s.value)
-        .filter(v => v !== ""); //ignore empty
-
-    selects.forEach(select => {
-        const ownValue = select.value; //value for each select
-
-        Array.from(select.options).forEach(opt => {
-            if (opt.value === "" || opt.value === ownValue) {
-                //show own options
-                opt.hidden = false;
-            } else {
-                //hid options in other
-                opt.hidden = selectedValues.includes(opt.value);
-            }
-        });
-    });
-}
-
-selects.forEach(select => {
-    select.addEventListener("change", updateOptions);
-});
-updateOptions();
 
 const assaultRifle = Object.freeze({
   "M15 MOD 0": "A01",
@@ -344,14 +297,14 @@ function calculate() {
         document.getElementById('muzzle').value.toUpperCase(),
         document.getElementById('barrel').value.toUpperCase(),
         document.getElementById('underbarrel').value.toUpperCase(),
+        document.getElementById('launchers').value.toUpperCase(),
         document.getElementById('magazine').value.toUpperCase(),
         document.getElementById('rearGrip').value.toUpperCase(),
         document.getElementById('stock').value.toUpperCase(),
         document.getElementById('laser').value.toUpperCase(),
-        document.getElementById('fireMod1').value.toUpperCase(),
-        document.getElementById('fireMod2').value.toUpperCase(),
-        document.getElementById('fireMod3').value.toUpperCase(),
-        document.getElementById('fireMod4').value.toUpperCase()       
+        document.getElementById('fireMod').value.toUpperCase(),
+        document.getElementById('ammoMod').value.toUpperCase(),
+        document.getElementById('special').value.toUpperCase()     
     ];
      for (let i = 0; i < values.length; i++) {
         values[i] = values[i].replace(/-/g, '');
