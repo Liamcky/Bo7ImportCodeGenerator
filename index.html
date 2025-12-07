@@ -37,6 +37,7 @@
           <option value="marksmanRifle">Marksman Rifles</option>
           <option value="sniper">Sniper Rifles</option>
           <option value="pistol">Pistols</option>
+          <option value="special">Specials</option>
         </select>
 </label>
   <label>Weapon:
@@ -257,6 +258,9 @@ const pistol = Object.freeze({
   "Velox 5.7": "P02",
   "Coda 9": "P03"
 });
+ const special = Object.freeze({
+  "NX Ravager": "U01"
+ });
  const weaponMap = {
   assaultRifle,
   submachinegun,
@@ -264,7 +268,8 @@ const pistol = Object.freeze({
   lightmachinegun,
   marksmanRifle,
   sniper,
-  pistol
+  pistol,
+  special
 };
  
 const category = document.getElementById('category').value;
