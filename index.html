@@ -25,6 +25,7 @@
  <p>Just look for the attachments you want to break for example: akimbo with lasers that are restricted. or stacked fire mods.</p>
  <p>Result is the Import code.</p>
  <h2>HAVE FUN</h2>
+ <button id="reset" onclick="reset()">reset</button>
  <div class="selectcontainer">
 <label>Category:
  <select id="category" onchange="categorymap(this.value)">
@@ -185,6 +186,37 @@
  </div>
 <script>
 
+ let reset = document.getElementById('reset');
+ let result =  document.getElementById('result');
+ let optic = document.getElementById('optic');
+ let muzzle = document.getElementById('muzzle');   
+ let barrel = document.getElementById('barrel');
+ let underbarrel = document.getElementById('underbarrel');
+ let launchers = document.getElementById('launchers');
+ let magazine = document.getElementById('magazine');
+ let rearGrip = document.getElementById('rearGrip');
+ let stock = document.getElementById('stock');
+ let laser = document.getElementById('laser');
+ let fireMod = document.getElementById('fireMod');
+ let ammoMod = document.getElementById('ammoMod');
+ let special = document.getElementById('special');  
+
+ 
+ reset(){
+        optic.value = "";
+        muzzle.value = "";
+        barrel.value = "";
+        underbarrel.value = "";
+        launchers.value = "";
+        magazine.value = "";
+        rearGrip.value = "";
+        stock.value = "";
+        laser.value "";
+        fireMod.value = "";
+        ammoMod.value = "";
+        special.value = "";  
+        result.innerText = "";
+        };
 const assaultRifle = Object.freeze({
   "M15 MOD 0": "A01",
   "AK-27": "A02",
@@ -296,18 +328,18 @@ let weaponvalue = "";
 function calculate() {
     weaponvalue = document.getElementById('weapon').value;
     const values = [
-        document.getElementById('optic').value.toUpperCase(),
-        document.getElementById('muzzle').value.toUpperCase(),
-        document.getElementById('barrel').value.toUpperCase(),
-        document.getElementById('underbarrel').value.toUpperCase(),
-        document.getElementById('launchers').value.toUpperCase(),
-        document.getElementById('magazine').value.toUpperCase(),
-        document.getElementById('rearGrip').value.toUpperCase(),
-        document.getElementById('stock').value.toUpperCase(),
-        document.getElementById('laser').value.toUpperCase(),
-        document.getElementById('fireMod').value.toUpperCase(),
-        document.getElementById('ammoMod').value.toUpperCase(),
-        document.getElementById('special').value.toUpperCase()     
+        optic.value,
+        muzzle.value,
+        barrel.value,
+        underbarrel.value,
+        launchers.value,
+        magazine.value,
+        rearGrip.value,
+        stock.value,
+        laser.value,
+        fireMod.value,
+        ammoMod.value,
+        special.value     
     ];
      for (let i = 0; i < values.length; i++) {
         values[i] = values[i].replace(/-/g, '');
@@ -315,7 +347,7 @@ function calculate() {
     
       
     const result = customAddMultiple(...values);
-    document.getElementById('result').innerText = "Result: " + weaponvalue + "-" + result.match(/.{1,5}/g).join('-');
+   result.innerText = "Result: " + weaponvalue + "-" + result.match(/.{1,5}/g).join('-');
 }
 </script>
 
