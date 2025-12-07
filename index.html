@@ -187,7 +187,7 @@
  </div>
 <script>
 
-let result =  document.getElementById('result');
+let resultText =  document.getElementById('result');
 let optic = document.getElementById('optic');
 let muzzle = document.getElementById('muzzle');   
 let barrel = document.getElementById('barrel');
@@ -214,7 +214,7 @@ function reset(){
         fireMod.value = "";
         ammoMod.value = "";
         special.value = "";  
-        result.innerText = "";
+        resultText.innerText = "";
         };
 const assaultRifle = Object.freeze({
   "M15 MOD 0": "A01",
@@ -350,7 +350,7 @@ function calculate() {
     
       
     const result = customAddMultiple(...values);
-   result.innerText = "Result: " + weaponvalue + "-" + result.match(/.{1,5}/g).join('-');
+   resultText.innerText = "Result: " + weaponvalue + "-" + result.match(/.{1,5}/g).join('-');
 }
 </script>
 
