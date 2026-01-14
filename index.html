@@ -289,12 +289,10 @@ const pistol = Object.freeze({
   specialW
 };
  
-const category = document.getElementById('category').value;
- 
-function categorymap(category){
+function categorymap(categorySelect){
  const weapon = document.getElementById('weapon');
   weapon.innerHTML = "";
-  const selectedCategory = weaponMap[category];
+  const selectedCategory = weaponMap[categorySelect];
   if (!selectedCategory) return;
 
   //get options
@@ -371,7 +369,9 @@ function calculate() {
     const result = customAddMultiple(...values);
    resultText.innerText = "Result: " + weaponvalue + "-" + result.match(/.{1,5}/g).join('-');
 }
- categorymap(category);
+window.addEventListener('DOMContentLoaded', () => {
+    const category = document.getElementById('category').value;
+    categorymap(category);
 </script>
 
 </body>
