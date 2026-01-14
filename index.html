@@ -291,6 +291,7 @@ const pistol = Object.freeze({
  
 function categorymap(categorySelect){
  const weapon = document.getElementById('weapon');
+ weapon.innerHTML = "";
   const selectedCategory = weaponMap[categorySelect.value];
   if (!selectedCategory) return;
 
