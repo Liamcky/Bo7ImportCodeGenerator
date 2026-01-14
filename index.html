@@ -29,7 +29,7 @@
  <button id="reset" onclick="reset()">reset</button>
  <div class="selectcontainer">
 <label>Category:
- <select id="category" autocomplete="off" onchange="categorymap(this.value)">
+ <select id="category" onchange="categorymap(this)">
           <option value="assaultRifle" selected>Assault Rifles</option>
           <option value="submachinegun">SMGS</option>
           <option value="shotgun">Shotguns</option>
@@ -292,7 +292,7 @@ const pistol = Object.freeze({
 function categorymap(categorySelect){
  const weapon = document.getElementById('weapon');
   weapon.innerHTML = "";
-  const selectedCategory = weaponMap[categorySelect];
+  const selectedCategory = weaponMap[categorySelect.value];
   if (!selectedCategory) return;
 
   //get options
@@ -302,7 +302,10 @@ function categorymap(categorySelect){
     opt.textContent = name; 
     weapon.appendChild(opt);
   });
- calculate();
+ if (weapon.options.length > 0) 
+     weapon.selectedIndex = 0;
+ 
+    calculate();
 }
  
 function customAddMultiple(...inputs) {
@@ -370,7 +373,7 @@ function calculate() {
    resultText.innerText = "Result: " + weaponvalue + "-" + result.match(/.{1,5}/g).join('-');
 }
 window.addEventListener('DOMContentLoaded', () => {
-    const category = document.getElementById('category').value;
+    const category = document.getElementById('category');
     categorymap(category);
  });
 </script>
