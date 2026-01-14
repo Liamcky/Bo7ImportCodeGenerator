@@ -291,7 +291,6 @@ const pistol = Object.freeze({
  
 function categorymap(categorySelect){
  const weapon = document.getElementById('weapon');
-  weapon.innerHTML = "";
   const selectedCategory = weaponMap[categorySelect.value];
   if (!selectedCategory) return;
 
@@ -311,7 +310,7 @@ function categorymap(categorySelect){
 function customAddMultiple(...inputs) {
     if (inputs.length === 0) return '';
 
-    const charset = "123456789ABCDEFGHIJKLMNPQRSTUVWXYZ"; // Base32 without O
+    const charset = "123456789ABCDEFGHIJKLMNPQRSTUVWXYZ"; // Base34 without O
     const baseValue = charset.length;
 
     const charToIndex = {};
@@ -367,7 +366,11 @@ function calculate() {
      for (let i = 0; i < values.length; i++) {
         values[i] = values[i].replace(/-/g, '');
     }
-    
+    const hasAttachment = values.some(v => v.length > 0);
+    if (!weaponvalue || !hasAttachment) {
+        resultText.innerText = ""; // clear result if not ready
+        return;
+    }
       
     const result = customAddMultiple(...values);
    resultText.innerText = "Result: " + weaponvalue + "-" + result.match(/.{1,5}/g).join('-');
