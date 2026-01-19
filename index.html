@@ -53,6 +53,7 @@
   </tr>
  </table>
  <button id="reset" onclick="reset()">reset</button>
+ <button is="invisAtt" onclick="invisAtt()">secrets</button>
  <div class="selectcontainer">
 <label>Category:
  <select id="category" onchange="categorymap(this)">
@@ -256,6 +257,30 @@ function reset(){
         special.value = "";  
         resultText.innerText = "";
         };
+ function invisAtt(){
+  reset();
+const weaponvalue = document.getElementById('weapon').value;
+  if (!Object.prototype.hasOwnProperty.call(invisAttachments, weaponvalue))
+     return;
+  const secret = invisAttachments[weaponvalue];
+  Object.entries(secret.attachments).forEach(([selectId, value]) => {
+    const selectElement = document.getElementById(selectId);
+   selectElement.value = value;
+  };
+ };
+ const invisAttachments = Object.freeze({
+  "AK-27": {
+    "attachments": {
+      "stock": "SD11"
+    }
+  },
+  "Akita": {
+    "attachments": {
+      "magazine": "9V711"
+    }
+  }
+});
+ 
 const assaultRifle = Object.freeze({
   "M15 MOD 0": "A01",
   "AK-27": "A02",
