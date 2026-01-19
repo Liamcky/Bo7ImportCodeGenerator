@@ -53,7 +53,7 @@
   </tr>
  </table>
  <button id="reset" onclick="reset()">reset</button>
- <button is="invisAtt" onclick="invisAtt()">secrets</button>
+ <button id="invisAtt" onclick="invisAtt()">secrets</button>
  <div class="selectcontainer">
 <label>Category:
  <select id="category" onchange="categorymap(this)">
@@ -265,16 +265,19 @@ const weaponvalue = document.getElementById('weapon').value;
   const secret = invisAttachments[weaponvalue];
   Object.entries(secret.attachments).forEach(([selectId, value]) => {
     const selectElement = document.getElementById(selectId);
-   selectElement.value = value;
-  };
+   if (selectElement) {
+      selectElement.value = value;
+      selectElement.dispatchEvent(new Event("change", { bubbles: true }));
+     }
+  });
  };
  const invisAttachments = Object.freeze({
-  "AK-27": {
+  "A02": {
     "attachments": {
       "stock": "SD11"
     }
   },
-  "Akita": {
+  "C03": {
     "attachments": {
       "magazine": "9V711"
     }
